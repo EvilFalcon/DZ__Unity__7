@@ -1,10 +1,8 @@
 ﻿using UnityEngine;
-using System.Collections;
 
-public class Sensor_Bandit : MonoBehaviour {
-
+public class Sensor_Bandit : MonoBehaviour 
+{
     private int m_ColCount = 0;
-
     private float m_DisableTimer;
 
     private void OnEnable()
@@ -16,6 +14,7 @@ public class Sensor_Bandit : MonoBehaviour {
     {
         if (m_DisableTimer > 0)
             return false;
+        
         return m_ColCount > 0;
     }
 

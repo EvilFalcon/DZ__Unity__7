@@ -23,13 +23,15 @@ public class Bandit : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         //Check if character just landed on the ground
-        if (!m_grounded && m_groundSensor.State()) {
+        if (!m_grounded && m_groundSensor.State())
+        {
             m_grounded = true;
             m_animator.SetBool("Grounded", m_grounded);
         }
 
         //Check if character just started falling
-        if(m_grounded && !m_groundSensor.State()) {
+        if(m_grounded && !m_groundSensor.State())
+        {
             m_grounded = false;
             m_animator.SetBool("Grounded", m_grounded);
         }
@@ -51,7 +53,8 @@ public class Bandit : MonoBehaviour {
 
         // -- Handle Animations --
         //Death
-        if (Input.GetKeyDown("e")) {
+        if (Input.GetKeyDown("e"))
+        {
             if(!m_isDead)
                 m_animator.SetTrigger("Death");
             else
@@ -65,7 +68,8 @@ public class Bandit : MonoBehaviour {
             m_animator.SetTrigger("Hurt");
 
         //Attack
-        else if(Input.GetMouseButtonDown(0)) {
+        else if(Input.GetMouseButtonDown(0)) 
+        {
             m_animator.SetTrigger("Attack");
         }
 
@@ -74,7 +78,8 @@ public class Bandit : MonoBehaviour {
             m_combatIdle = !m_combatIdle;
 
         //Jump
-        else if (Input.GetKeyDown("space") && m_grounded) {
+        else if (Input.GetKeyDown("space") && m_grounded)
+        {
             m_animator.SetTrigger("Jump");
             m_grounded = false;
             m_animator.SetBool("Grounded", m_grounded);
