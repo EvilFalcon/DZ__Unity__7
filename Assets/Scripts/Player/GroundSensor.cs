@@ -13,7 +13,7 @@ namespace Player
 
         private void Start()
         {
-            _circleCollider2D = gameObject.GetComponent<CircleCollider2D>();
+            _circleCollider2D = GetComponent<CircleCollider2D>();
             _circleCollider2D.radius = RadiusCollider2d;
             _circleCollider2D.isTrigger = true;
         }
