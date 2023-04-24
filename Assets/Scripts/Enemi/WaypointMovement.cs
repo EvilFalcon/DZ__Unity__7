@@ -24,7 +24,7 @@ namespace Enemi
             }
         }
 
-        void Update()
+        private void Update()
         {
             Transform targeTransform = _points[_currentPoint];
             transform.position =

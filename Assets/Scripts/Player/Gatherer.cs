@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Player
 {
     [RequireComponent(typeof(TriggerZone))]
-    public class TakeItem : MonoBehaviour
+    public class Gatherer : MonoBehaviour
     {
         private TriggerZone _triggerZone;
 
@@ -19,7 +19,7 @@ namespace Player
             _triggerZone.PickedUp -= OnPickedUp;
         }
 
-        private void OnPickedUp(IPickUp item)
+        private void OnPickedUp(IPickingUp item)
         {
             item.Get();
         }

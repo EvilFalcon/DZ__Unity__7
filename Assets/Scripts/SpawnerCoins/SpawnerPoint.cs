@@ -2,8 +2,5 @@
 
 namespace SpawnerCoins
 {
-    public class SpawnerPoint:MonoBehaviour
-    {
-        
-    }
+    public class SpawnerPoint:MonoBehaviour {}
 }
