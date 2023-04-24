@@ -1,6 +1,6 @@
 ﻿namespace Item.Iinterfase
 {
-    public interface IPickingUp
+    public interface IPickable
     {
         void Get();
     }

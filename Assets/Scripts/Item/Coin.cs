@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Item
 {
-    public class Coin : MonoBehaviour, IPickingUp
+    public class Coin : MonoBehaviour, IPickable
     {
         public void Get()
         {

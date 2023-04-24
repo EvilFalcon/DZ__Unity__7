@@ -19,7 +19,7 @@ namespace Player
             _triggerZone.PickedUp -= OnPickedUp;
         }
 
-        private void OnPickedUp(IPickingUp item)
+        private void OnPickedUp(IPickable item)
         {
             item.Get();
         }
