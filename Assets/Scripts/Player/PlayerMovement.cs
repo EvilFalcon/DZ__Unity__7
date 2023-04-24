@@ -9,12 +9,14 @@ namespace Player
         [SerializeField] private float _jumpForce = 12f;
         [SerializeField] private float _gravityScale = 2f;
 
+        private const string Horizontal = "Horizontal";
+        private const float Epsilon = 0.01f;
+        
         private Vector2 _velocity = Vector2.zero;
         private Quaternion _rotation;
         private Rigidbody2D _rigidbody2D;
         private GroundSensor _groundSensor;
-
-        private float _epsilon = 0.01f;
+        
         private float _turnRight = 180;
         private float _turnLeft = 0;
         private float _horizontal;
@@ -29,10 +31,10 @@ namespace Player
 
         private void Update()
         {
-            _horizontal = Input.GetAxisRaw("Horizontal");
+            _horizontal = Input.GetAxisRaw(Horizontal);
             _velocity += _gravityScale * Time.deltaTime * Physics2D.gravity;
 
-            if (Mathf.Abs(_rigidbody2D.velocity.y) < _epsilon)
+            if (Mathf.Abs(_rigidbody2D.velocity.y) < Epsilon)
             {
                 _velocity.y = 0;
             }
