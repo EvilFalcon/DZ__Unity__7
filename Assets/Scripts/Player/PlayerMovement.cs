@@ -2,6 +2,7 @@ using UnityEngine;
 
 namespace Player
 {
+    [RequireComponent(typeof(Rigidbody2D))]
     public class PlayerMovement : MonoBehaviour
     {
         [SerializeField] private float _moveSpeed = 5f;
@@ -18,7 +19,7 @@ namespace Player
         private float _turnLeft = 0;
         private float _horizontal;
 
-       public bool IsMove => _horizontal != 0;
+        public bool IsMove => _horizontal != 0;
 
         private void Start()
         {
@@ -28,8 +29,8 @@ namespace Player
 
         private void Update()
         {
-             _horizontal = Input.GetAxisRaw("Horizontal");
-             _velocity += _gravityScale * Time.deltaTime * Physics2D.gravity;
+            _horizontal = Input.GetAxisRaw("Horizontal");
+            _velocity += _gravityScale * Time.deltaTime * Physics2D.gravity;
 
             if (Mathf.Abs(_rigidbody2D.velocity.y) < _epsilon)
             {
@@ -37,19 +38,17 @@ namespace Player
             }
 
             _velocity.x = _horizontal * _moveSpeed;
-           
-            
-                if (_horizontal > 0)
-                {
-                    _rotation.y = _turnRight;
-                }
-                else if (_horizontal < 0)
-                {
-                    _rotation.y = _turnLeft;
-                }
 
-                transform.rotation = _rotation;
-            
+            if (_horizontal > 0)
+            {
+                _rotation.y = _turnRight;
+            }
+            else if (_horizontal < 0)
+            {
+                _rotation.y = _turnLeft;
+            }
+
+            transform.rotation = _rotation;
 
             if (Input.GetKeyDown(KeyCode.Space))
             {
@@ -60,9 +59,6 @@ namespace Player
             }
 
             _rigidbody2D.velocity = _velocity;
-            
-          
-   
         }
     }
 }

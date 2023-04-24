@@ -2,12 +2,15 @@ using UnityEngine;
 
 namespace Player
 {
+    [RequireComponent(
+        typeof(PlayerMovement),
+        typeof(Animator))]
     public class PlayerAnimation : MonoBehaviour
     {
         private GroundSensor _groundSensor;
         private Animator _animator;
         private PlayerMovement _playerMovement;
-        
+
         private int _animationState = Animator.StringToHash("AnimState");
         private int _grounded = Animator.StringToHash("Grounded");
 
