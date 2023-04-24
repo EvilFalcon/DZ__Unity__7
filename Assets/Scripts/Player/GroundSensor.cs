@@ -1,13 +1,14 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Player
 {
     [RequireComponent(typeof(CircleCollider2D))]
     public class GroundSensor : MonoBehaviour
     {
-        private CircleCollider2D _circleCollider2D;
         private const float RadiusCollider2d = 0.05f;
+
+        private CircleCollider2D _circleCollider2D;
+
         public bool IsGrounded { get; private set; }
 
         private void Start()
@@ -24,6 +25,7 @@ namespace Player
 
         private void OnTriggerExit2D(Collider2D other)
         {
+            Debug.Log(IsGrounded);
             IsGrounded = false;
         }
     }

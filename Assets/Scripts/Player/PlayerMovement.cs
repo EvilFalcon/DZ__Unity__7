@@ -1,5 +1,3 @@
-using System;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Player
@@ -11,31 +9,47 @@ namespace Player
         [SerializeField] private float _gravityScale = 2f;
 
         private Vector2 _velocity = Vector2.zero;
+        private Quaternion _rotation;
         private Rigidbody2D _rigidbody2D;
         private GroundSensor _groundSensor;
 
-        private void Awake()
-        {
-            Instantiate(new GameObject("Ground Sensor"), transform).gameObject.AddComponent(typeof(GroundSensor));
-        }
+        private float _epsilon = 0.01f;
+        private float _turnRight = 180;
+        private float _turnLeft = 0;
+        private float _horizontal;
+
+       public bool IsMove => _horizontal != 0;
 
         private void Start()
         {
-            _groundSensor = gameObject.GetComponentInChildren<GroundSensor>();
-            _rigidbody2D = gameObject.GetComponent<Rigidbody2D>();
+            _groundSensor = GetComponentInChildren<GroundSensor>();
+            _rigidbody2D = GetComponent<Rigidbody2D>();
         }
 
         private void Update()
         {
-            float horizontal = Input.GetAxisRaw("Horizontal");
-            _velocity += _gravityScale * Time.deltaTime * Physics2D.gravity;
+             _horizontal = Input.GetAxisRaw("Horizontal");
+             _velocity += _gravityScale * Time.deltaTime * Physics2D.gravity;
 
-            if (Mathf.Abs(_rigidbody2D.velocity.y) < 0.01f)
+            if (Mathf.Abs(_rigidbody2D.velocity.y) < _epsilon)
             {
                 _velocity.y = 0;
             }
 
-            _velocity.x = horizontal * _moveSpeed;
+            _velocity.x = _horizontal * _moveSpeed;
+           
+            
+                if (_horizontal > 0)
+                {
+                    _rotation.y = _turnRight;
+                }
+                else if (_horizontal < 0)
+                {
+                    _rotation.y = _turnLeft;
+                }
+
+                transform.rotation = _rotation;
+            
 
             if (Input.GetKeyDown(KeyCode.Space))
             {
@@ -46,6 +60,9 @@ namespace Player
             }
 
             _rigidbody2D.velocity = _velocity;
+            
+          
+   
         }
     }
 }
