@@ -25,7 +25,6 @@ namespace Player
 
         private void OnTriggerExit2D(Collider2D other)
         {
-            Debug.Log(IsGrounded);
             IsGrounded = false;
         }
     }
