@@ -40,7 +40,7 @@ namespace Enemi
                 }
             }
 
-            if (transform.position.x >= targeTransform.position.x)
+            if (gameObject.transform.position.x >= targeTransform.position.x)
             {
                 _transformRotation.y = _turnLeft;
             }
